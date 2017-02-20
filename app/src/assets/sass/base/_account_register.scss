@@ -1,0 +1,27 @@
+#page-register {
+  .wrap-register-box {
+    width: 60%;
+    margin: 0 auto;
+    input {
+      border-width: 1px;
+      border-color: #aaa936;
+      border-style: solid;
+      padding: 20px 18px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .btn {
+      border-radius: 15px;
+      background-color: #eba820;
+      padding: 15px 35px;
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: inline-block;
+      width: initial;
+      border-color: transparent;
+    }
+  }
+}

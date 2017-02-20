@@ -1,0 +1,124 @@
+div#shopify-section-page-about {
+  .wrap-content {
+    p {
+      color: #4b3027;
+      font-size: 16px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 400;
+      letter-spacing: 1.2px;
+    }
+  }
+  .wrap-image-about {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .wrap-titile-about {
+    h3 {
+      color: #442f2f;
+      font-size: 30px;
+      font-weight: 400;
+      font-family: 'BerkshireSwash-Regular';
+      text-transform: capitalize;
+      margin: 0;
+      position: relative;
+      margin-bottom: 53px;
+      &::after {
+        content: '';
+        background: url(list_small.png) center top no-repeat;
+        width: 33px;
+        height: 28px;
+        position: absolute;
+        top: -30px;
+        left: 49.5%;
+      }
+    }
+  }
+  .wrap-box-child {
+    margin-top: 125px;
+    position: relative;
+    &:after {
+      content: '';
+      background: url(about_cloud.png) left bottom no-repeat;
+      width: 156px;
+      height: 82px;
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+    }
+    .wrap-box-about {
+      background: #e7e7b0;
+      padding: 59px 0 69px 0;
+      .block-text {
+        text-align: center;
+        float: left;
+        width: 25%;
+        padding-top: 15px;
+        p {
+          color: #4b3027;
+          font-size: 13.96px;
+          font-weight: 600;
+          font-style: italic;
+          text-align: center;
+          transform: scaleY(1.0031);
+          text-transform: uppercase;
+          padding-top: 10px;
+        }
+        .wrap-circle {
+          border-radius: 50%;
+          background-color: #ffffff;
+          width: 116px;
+          height: 116px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 767px) {
+    .image_content {
+      padding-top: 200px;
+    }
+    .image_content_circle {
+      position: absolute;
+      top: -90px;
+      right: 0;
+    }
+    .wrap-content {
+      padding-right: 82px;
+    }
+
+    .image_content:after {
+      content: '';
+      background: url(about_cloud.png) left bottom no-repeat;
+      width: 156px;
+      height: 82px;
+      position: absolute;
+      z-index: 1;
+      top: 155px;
+      right: 72px;
+    }
+
+  }
+
+  @media (min-width: 992px) {
+    .image_content {
+      position: relative;
+      &:after {
+        content: '';
+        background: url(about_cloud.png) left bottom no-repeat;
+        width: 156px;
+        height: 82px;
+        position: absolute;
+        top: 230px;
+        right: 185px;
+        z-index: 1;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,104 @@
+#wrap-contscts {
+  form {
+
+    @media (min-width: 1367px) {
+      position: relative;
+      &:after {
+        content: '';
+        width: 120px;
+        height: 90px;
+        position: absolute;
+        background: url(about_cloud.png) left top no-repeat;
+        left: -51px;
+        bottom: -58px;
+        background-size: 100%;
+      }
+    }
+
+  }
+  .wrap-adresses-contacts {
+    margin-top: 62px;
+    padding: 38px 46px 57px 46px;
+    background-color: #e7e7b0;
+    @media (min-width: 1367px) {
+      position: relative;
+      &:after {
+        content: '';
+        width: 67px;
+        height: 35px;
+        position: absolute;
+        background: url(about_cloud.png) left top no-repeat;
+        right: -25px;
+        top: -13px;
+        background-size: 100%;
+      }
+    }
+
+    h3 {
+      color: #4b3027;
+      font-size: 30px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 400;
+      font-family: 'BerkshireSwash-Regular';
+      margin-bottom: 31px;
+    }
+    ul {
+      li {
+        color: #4b3027;
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 0.4px;
+        margin-bottom: 15px;
+        text-align: left;
+        text-transform: uppercase;
+        padding-left: 40px;
+      }
+      .city-country-street {
+        background: url(home.png) left 5px no-repeat;
+      }
+      .phone {
+        background: url(phone.png) left top no-repeat;
+      }
+      .email {
+        background: url(mail.png) left 5px no-repeat;
+      }
+    }
+  }
+  input, textarea {
+    border-width: 1px;
+    border-color: #aaa936;
+    border-style: solid;
+    background-color: #ffffff;
+    padding: 20px 0 20px 29px;
+    &:focus {
+      outline: none;
+    }
+  }
+  .btnsubmite {
+    border-radius: 15px;
+    background-color: #eba820;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    padding: 13px 74px;
+    margin-top: 15px;
+  }
+  .title {
+    color: #4b3027;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 1.35px;
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+  }
+  .wrap-input-contacts {
+    display: flex;
+    justify-content: space-between;
+  }
+  input:not(.btnsubmite) {
+    width: 32%;
+  }
+}

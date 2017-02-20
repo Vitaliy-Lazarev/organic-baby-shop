@@ -1,0 +1,230 @@
+<div class="page-width" data-section-id="{{ section.id }}" data-section-type="cart-template">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 wrap-breadcrumbs">
+          <div class="breadcrumbs">
+            <nav class="breadcrumb">
+              <a href="/">Home</a> 
+              <span class='arrow_breadcrums' aria-hidden="true">&rsaquo;</span>
+              <span>Shopping Cart</span>
+              
+            </nav>
+          </div>
+        </div>
+      </div> 
+    </div>
+
+      <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+          
+        
+
+  {% if cart.item_count > 0 %}
+    <form action="/cart" method="post" novalidate class="cart">
+      <table>
+        <thead class="cart__row cart__header">
+          <th colspan="2" class='phone-name'>{{ 'cart.label.product' | t }}</th>
+          <th>Description</th>
+          <th>{{ 'cart.label.price' | t }}</th>
+          <th class="text-center">{{ 'cart.label.quantity' | t }}</th>
+          <th class="text-right">{{ 'cart.label.total' | t }}</th>
+          <th class='wrap-remove'></th>
+        </thead>
+        <tbody>
+          {% for item in cart.items %}
+            <tr class="cart__row border-bottom line{{ forloop.index }} cart-flex{% if forloop.first %} border-top{% endif %}">
+              <td colspan="2" class="cart__image-wrapper cart-flex-item">
+                <a href="{{ item.url | within: collections.all }}">
+                  <img class="cart__image" src="{{ item | img_url: '250x' }}" alt="{{ item.title | escape }}">
+                </a>
+              </td>
+              <td class="cart__meta">
+                <div class="list-view-item__title">
+                  <a href="{{ item.url }}">
+                    {{ item.product.title }}
+                    {% if item.quantity > 1 %}
+                      <span class="medium-up--hide"><span class="visually-hidden">{{ 'cart.label.quantity' | t }}</span>(x{{ item.quantity }})</span>
+                    {% endif %}
+                  </a>
+                </div>
+                {% unless item.variant.title contains 'Default' %}
+                  <div class="cart__meta-text">
+                    {% for option in item.product.options %}
+                      {{ option }}: {{ item.variant.options[forloop.index0] }}</br>
+                    {% endfor %}
+                  </div>
+                {% endunless %}
+
+                {% comment %}
+                  Optional, loop through custom product line items if available
+
+                  Line item properties come in as having two parts. The first part will be passed with the default form,
+                  but p.last is the actual custom property and may be blank. If it is, don't show it.
+
+                  For more info on line item properties, visit:
+                    - http://docs.shopify.com/support/your-store/products/how-do-I-collect-additional-information-on-the-product-page-Like-for-a-monogram-engraving-or-customization
+                {% endcomment %}
+                {%- assign property_size = item.properties | size -%}
+                {% if property_size > 0 %}
+                  <div class="cart__meta-text product-subscription">
+                      <span class="subscription">Subscription
+                    {% for p in item.properties %}
+                      {% unless p.last == blank %}
+                        {% comment %}
+                          Check if there was an uploaded file associated
+                        {% endcomment %}
+                        {% if p.last contains '/uploads/' %}
+                          <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                        {% else %}
+
+                            {% if p.first != 'subscription_id'%}
+                                {{ p.last }}
+                            {% endif %}
+
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}</span>
+                  </div>
+                {% endif %}
+              </td>
+              <td class="cart__price-wrapper">
+                  <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="large--hide medium-down--show cart__remove">x</a>
+                {{ item.price | money }}
+
+                  <div class="cart-item__discount medium-up--hide">{{ discount.code }}</div>
+                {% for discount in item.discounts %}
+                {% endfor %}
+
+                {% comment %}<div class="cart__edit medium-up--hide">
+                  <button type="button" class="btn btn--secondary btn--small js-edit-toggle cart__edit--active" data-target="line{{ forloop.index }}">
+                    <span class="cart__edit-text--edit">{{ 'cart.general.edit' | t }}</span>
+                    <span class="cart__edit-text--cancel">{{ 'cart.general.cancel' | t }}</span>
+                  </button>
+                </div>{% endcomment %}
+              </td>
+              <td class="cart__update-wrapper text-right">
+
+                <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="btn btn--small btn--secondary cart__remove medium-up--hide">{{ 'cart.general.remove' | t }}</a>
+                <div class="cart__qty">
+                  <label for="updates_{{ item.key }}" class="cart__qty-label">{{ 'cart.label.quantity' | t }}</label>
+                  <input class="cart__qty-input" type="text" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" pattern="[0-9]*">
+                </div>
+                <input type="submit" name="update" class="btn btn--small cart__update medium-up--hide" value="{{ 'cart.general.update' | t }}">
+              </td>
+              <td class="cart__price-wrapper text-right small--hide">
+                {% if item.original_line_price != item.line_price %}
+                  <div class="cart-item__original-price"><s>{{ item.original_line_price | money }}</s></div>
+                {% endif %}
+
+                <div>
+
+                  {{ item.line_price | money }}
+                </div>
+
+                {% for discount in item.discounts %}
+                  <div class="cart-item__discount">{{ discount.title }}</div>
+                {% endfor %}
+              </td>
+              <td class="wrap-remove text-center small--hide">
+                
+
+                  <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove">x</a>
+
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <footer class="cart__footer">
+        <div class="">
+          <div class="row">
+            <div class="col-sm-4">
+            
+             <!-- Begin Discount -->
+    <div class="discount-wrapper">
+    <div class="promo-entry">
+      <label for="">Apply coupon code</label>
+    <div class="input-group">
+      <input type="text" placeholder='xxxxxx' name="promo-input" id="promo-input" value=""  class="promo-input" />
+    <a class="promo_apply" href="javascript:void(0)">Apply<span></span></a>
+    </div>
+    
+    
+    </div>
+    <div class="promo-notification" style="display:none;">
+    <label>Promo Code / Discount?</label>
+        <p>If you have a discount code, You can enter it in "Step2" of the checkout process.</p>
+    </div>
+    </div>
+    {% if section.settings.cart_notes_enable %}
+            <div class="cart_notes_enable cart-note">
+              <textarea placeholder='Special instructions for seller' name="note" id="CartSpecialInstructions" class="cart-note__input">{{ cart.note }}</textarea>
+            </div>
+          {% endif %}
+    <script type="text/javascript">
+    jQuery( "#promo-input" ).focus(function() {
+      jQuery(".promo-entry").hide();
+      jQuery(".promo-notification").show();
+    });
+    </script>
+    <!-- End Discount -->
+          </div>
+          <div class="col-sm-8">
+            <div class="grid__item text-right small--text-center">
+            <div>
+              <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
+              <span class="cart__subtotal">{{ cart.total_price | money }}</span>
+            </div>
+            {% if cart.total_discounts > 0 %}
+              <div class="cart__savings">
+                {{ 'cart.general.savings' | t }}
+                <span class="cart__savings-amount">{{ cart.total_discounts | money }}</span>
+              </div>
+            {% endif %}
+            <div class="cart__shipping">{{ 'cart.general.shipping_at_checkout' | t }}</div>
+                {% comment %}
+            <input type="submit" name="update" class="btn btn--secondary cart__update cart__update--large small--hide" value="{{ 'cart.general.update' | t }}">
+                {% endcomment %}
+            <input type="submit" name="checkout" class="cart-checkout btn btn--small-wide" value="{{ 'cart.general.checkout' | t }}">
+            {% if additional_checkout_buttons %}
+              <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+            {% endif %}
+          </div>
+          </div>
+          </div>
+          
+          
+        </div>
+      </footer>
+    </form>
+  {% else %}
+    <div class="empty-page-content text-center">
+      <p>{{ 'cart.general.empty' | t }}</p>
+    </div>
+  {% endif %}
+      </div>
+    <div class="col-sm-12">
+      <div class="block-shopping small--text-center">  
+        <a href="/collections/all" class='continue-shopping' title="Browse our Catalog">Continue Shopping</a>
+      </div>
+    </div>
+    </div>
+      
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Cart page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}

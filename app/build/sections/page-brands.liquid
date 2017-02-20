@@ -1,0 +1,100 @@
+{% if section.blocks != blank%}
+<div class="section-products-brands">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 wrap-breadcrumbs">
+        <div class="breadcrumbs">
+          {% include 'breadcrumbs' %}
+        </div>
+      </div>
+    </div> 
+        <ul class='products-brands'>
+          {% for block in section.blocks %}
+          <li class="col-xs-12 col-sm-6 {% if forloop.index == 2 %} clearfix {% endif %}">
+            <div class="wrap-description">
+              <div class="title">
+                <img src="{{ block.settings.title_image_brands | img_url: 'medium' }}" itemprop="brands">
+              </div>
+              <p>{{block.settings.description_products_brands}}</p>
+            </div>
+            
+            <div class="image-link">
+              <div class="main-image">
+                <img src="{{ block.settings.image_products_brands | img_url: 'large' }}" itemprop="brands">
+              </div>
+              <a class='button' href="{{block.settings.button_products}}">See more products</a>
+            </div>
+          </li>
+
+          {% endfor %}
+        </ul>
+  </div>
+</div>
+<script>
+//   jQuery(document).ready(function($) {
+//     $('.products-brands li').equalHeights();
+//   });
+</script>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Products Brands",
+	
+	"blocks": [
+      {
+        "type": "image",
+        "name": "Products brands",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "title_image_brands",
+            "label": "Tite image product brands"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_products_brands",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "description_products_brands",
+            "label": "Description product brands"
+          },
+          {
+            "type": "url",
+            "id": "button_products",
+            "label": "See more products"
+          }
+        ]
+      }
+    ],
+	"presets": [
+      {
+        "name": "Products Brands",
+        "category": "Image",
+      
+	"blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]}
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

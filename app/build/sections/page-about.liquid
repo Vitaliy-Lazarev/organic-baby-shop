@@ -1,0 +1,155 @@
+<div class="page-width">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12 wrap-breadcrumbs">
+          <div class="breadcrumbs">
+            {% include 'breadcrumbs' %}
+          </div>
+        </div>
+      </div> 
+    <div class="row">
+      
+
+      <div class="{% if section.settings.image_content or section.settings.image_content_circle%}col-sm-7{% else %}col-sm-12{% endif %}">
+        <div class="wrap-content">
+          {{ page.content }}
+        </div>
+      </div>
+      <div class="col-sm-5">
+        {% if section.settings.image_content != blank or section.settings.image_content_circle != blank%}
+          <div class="image_content">
+            <img src="{{ section.settings.image_content | img_url: 'large' }}" alt="">
+          </div>
+          <div class="image_content_circle">
+            <img src="{{ section.settings.image_content_circle | img_url: 'large' }}" alt="">
+          </div>
+
+        {% endif %}
+      </div>
+      <div class="col-sm-12 wrap-box-child">
+        <div class="wrap-box-about">
+        {% if section.settings.about_title != blank %}
+        <div class="wrap-titile-about">
+            <h3 class='text-center'>{{section.settings.about_title}}</h3>
+          
+        </div>
+        {% endif %}
+      
+          <div class="wrap-image-about">
+            {% if section.settings.image_circle_about != blank %}
+                <div class="block-text text-center">
+                  <div class="wrap-circle">
+                    <img src="{{ section.settings.image_circle_about | img_url: '100x100' }}" alt="">
+                  </div>
+                 <p>{{section.settings.image_about_text}}</p>
+               </div>
+            {% endif %}
+          
+          
+            {% if section.settings.image_circle_about_two != blank %}
+                <div class="block-text text-center">
+                  <div class="wrap-circle">
+                    <img src="{{ section.settings.image_circle_about_two | img_url: '100x100' }}" alt="">
+                  </div>
+                 <p>{{section.settings.image_about_text_two}}</p>
+               </div>
+            {% endif %}
+          
+            {% if section.settings.image_circle_about_tree != blank %}
+                <div class="block-text text-center">
+                  <div class="wrap-circle">
+                    <img src="{{ section.settings.image_circle_about_tree | img_url: '100x100' }}" alt="">
+                  </div>
+                 <p>{{section.settings.image_about_text_tree}}</p>
+               </div>
+            {% endif %}
+
+            {% if section.settings.image_circle_about_four != blank %}
+              <div class="block-text text-center">
+                <div class="wrap-circle">
+                  <img src="{{ section.settings.image_circle_about_four | img_url: '100x100' }}" alt="">
+                </div>
+                <p>{{section.settings.image_about_text_four}}</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Image with text",
+    "class": "abput-section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_content",
+        "label": "Image Content Baby"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_content_circle",
+        "label": "Image Content Circle"
+      },
+      {
+        "type": "text",
+        "id": "about_title",
+        "label": "About title"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_circle_about",
+        "label": "Image Circle About"
+      },
+      {
+        "type": "text",
+        "id": "image_about_text",
+        "label": "Heading",
+        "default": "Image with text about"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_circle_about_two",
+        "label": "Image Circle About Two"
+      },
+      {
+        "type": "text",
+        "id": "image_about_text_two",
+        "label": "Heading",
+        "default": "Image with text about two"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_circle_about_tree",
+        "label": "Image Circle About Tree"
+      },
+      {
+        "type": "text",
+        "id": "image_about_text_tree",
+        "label": "Heading",
+        "default": "Image with text about tree"
+      },
+      {
+      "type": "image_picker",
+      "id": "image_circle_about_four",
+      "label": "Image Circle About Four"
+      },
+      {
+      "type": "text",
+      "id": "image_about_text_four",
+      "label": "Heading",
+      "default": "Image with text about four"
+      }
+    
+    ],
+    "presets": [
+      {
+        "name": "Image with text",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

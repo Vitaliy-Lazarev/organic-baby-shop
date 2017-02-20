@@ -1,0 +1,72 @@
+{% if section.blocks != blank%}
+{{ 'jquery_accordion.js' | asset_url | script_tag }}
+<div class="section-faq">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 wrap-breadcrumbs">
+        <div class="breadcrumbs">
+          {% include 'breadcrumbs' %}
+        </div>
+      </div>
+    </div> 
+    {% for block in section.blocks %}
+      
+      <div class="wrap-accordion">
+        <div class="accordion" id="section{{ forloop.index }}">{{block.settings.title_accordion}}</div>
+          <div class="container">
+            <div class="content">
+              <p>{{block.settings.description_accordion}}</p>
+            </div>
+          </div>
+      </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+
+<script type="text/javascript">
+$('.accordion').accordion({
+defaultOpen: 'section1',
+animate: 100
+});
+</script>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Products FAQ",
+	
+	  "blocks": [
+      {
+        "type": "text",
+        "name": "Accordion FAQ",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title_accordion",
+            "label": "Title accordion"
+          },
+          {
+            "type": "text",
+            "id": "description_accordion",
+            "label": "Description accordion"
+          }
+        ]
+      }
+    ],
+	"presets": [
+      {
+        "name": "Products Brands",
+        "category": "Image",
+      
+  	  "blocks": [
+          {
+            "type": "text"
+          }
+        ]}
+    ]
+}
+{% endschema %}
+

@@ -1,0 +1,75 @@
+<div class="page-width" id='account-details'>
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="breadcrumbs">
+            {% include 'breadcrumbs' %}
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="wrap-product-order">
+      {% paginate customer.orders by 30 %}
+        {% if customer.orders.size != 0 %}
+      <h2 class='title-history'>{{ 'customer.orders.title' | t }}</h2>
+      {% for order in customer.orders %}
+        <script>
+          
+          $.ajax({
+            url: "{{ order.customer_url }}",
+            cache: false
+          })
+            .done(function( html ) {
+              
+              var $html = $(html);
+
+              var code = $html.find('.order-product').html();
+
+              var ul = document.createElement('ul');
+              var hr = document.createElement('hr');
+
+              ul.innerHTML = code;
+
+              $('.title-history').after(ul);
+              $(ul).after(hr);
+
+            });
+          
+          </script>
+      {% endfor %}
+
+        {% else %}
+
+          <p class="without-order">{{ 'customer.orders.none' | t }}</p>
+
+        {% endif %}
+        {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
+        {% endif %}
+      {% endpaginate %}
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <h2 class='account-details'>{{ 'customer.account.details' | t }}</h2>
+
+      <div class="wrap-details">
+        <div class="name-last">
+          {{ customer.first_name }} {{ customer.last_name }}
+        </div> 
+      {{ customer.default_address | format_address }}
+
+      <p><a href="/account/addresses" class="more-adress">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+      </div>
+    </div>
+    <div class="pull-right col-sm-3">
+      <div class="account-logout">
+        {{ 'layout.customer.log_out' | t | customer_logout_link }}
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

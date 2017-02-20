@@ -1,0 +1,66 @@
+{% if section.blocks != blank %}
+<div class="wrap-sub-category">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      {% for block in section.blocks %}
+    
+        <div class="category-hipp">
+          <h3>{{block.settings.title_hipp_organic}}</h3>
+            <div class="content">
+              <p>{{block.settings.description_hipp_organic}}</p>
+            </div>
+        </div>
+
+
+    {% endfor %}
+    <div class="footer_hipp">
+      {{section.settings.footer_hipp_organic}}
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endif %}          
+{% schema %}
+  {
+    "name": "Category HIPP Organic",
+    "settings": [{
+      
+            "type": "text",
+            "id": "footer_hipp_organic",
+            "label": "Footer Hipp Organic"
+
+      }],
+  
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Hipp Organic text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title_hipp_organic",
+            "label": "Title Hipp Organic"
+          },
+          {
+            "type": "text",
+            "id": "description_hipp_organic",
+            "label": "Description Hipp Organic"
+          }
+        ]
+      }
+    ],
+  "presets": [
+      {
+        "name": "Category HIPP Organic",
+        "category": "text",
+      
+      "blocks": [
+          {
+            "type": "text"
+          }
+        ]}
+    ]
+}
+{% endschema %}

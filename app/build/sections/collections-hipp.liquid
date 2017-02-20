@@ -1,0 +1,66 @@
+{% if section.blocks != blank %}
+<div class="wrap-sub-category">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      {% for block in section.blocks %}
+    
+        <div class="category-hipp">
+          <h3>{{block.settings.title_hipp}}</h3>
+            <div class="content">
+              <p>{{block.settings.description_hipp}}</p>
+            </div>
+        </div>
+
+
+    {% endfor %}
+    <div class="footer_hipp">
+      {{section.settings.footer_hipp}}
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endif %}          
+{% schema %}
+  {
+    "name": "Category HIPP",
+    "settings": [{
+      
+            "type": "text",
+            "id": "footer_hipp",
+            "label": "Footer Hipp"
+
+      }],
+	
+	  "blocks": [
+      {
+        "type": "text",
+        "name": "Hipp category text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title_hipp",
+            "label": "Title Hipp"
+          },
+          {
+            "type": "text",
+            "id": "description_hipp",
+            "label": "Description Hipp"
+          }
+        ]
+      }
+    ],
+	"presets": [
+      {
+        "name": "Category HIPP",
+        "category": "text",
+      
+  	  "blocks": [
+          {
+            "type": "text"
+          }
+        ]}
+    ]
+}
+{% endschema %}

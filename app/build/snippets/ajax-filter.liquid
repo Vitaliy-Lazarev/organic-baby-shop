@@ -1,0 +1,113 @@
+<script>
+
+    $(document).ready(function () {
+        $(".block-title").on('click',function () {
+
+            $(this).toggleClass('open');
+            $(this).next().slideToggle("slow");
+
+        });
+    });
+
+
+
+
+    function vendorProduct(value) {
+      var arr = [];
+
+      var $ajaxValue  = $('.ajax-value');
+      $ajaxValueLength  = $('.ajax-value:checked').length;
+
+      for(var key in $ajaxValue){
+
+          if($ajaxValue[key].checked){
+
+            arr.push($ajaxValue[key].value);
+
+          }
+
+      }
+
+      if($ajaxValueLength == 0){
+
+        value = window.location;
+
+        ajaxRequest(value);
+
+      }else {
+
+        for(var i = 0; i < arr.length; i++){
+
+          ajaxRequest(arr[i]);
+          
+
+        }
+
+      }
+
+  }
+
+  var arrIdProduct = [];
+  function ajaxRequest(request){
+
+    $.ajax({
+      url: request,
+      cache: false
+    })
+      .done(function( html ) {
+
+        	
+      $html = $(html);
+      var wrapFilter = $html.find('.wrap-filter');
+      var wrapFilterAddClass = $(wrapFilter).addClass('col-sm-9');
+      var appendFilter = $html.find('.wrap-filter .grid .col-sm-6.col-xs-12');
+      var appendRemoveClass = $(appendFilter).removeClass();
+      var appendAddClass = $(appendRemoveClass).addClass('col-lg-4 col-md-4 col-sm-6 col-xs-12');
+
+        if( $ajaxValueLength == 1){
+          $('.wrap-filter').replaceWith(wrapFilterAddClass);
+        }else if($ajaxValueLength == 0){
+
+          $('.wrap-filter').replaceWith(wrapFilterAddClass);
+
+        }else{
+
+   //      	var $idProduct = $('.wrap-filter .grid .col-lg-4.col-md-4.col-sm-6.col-xs-12 .wrap-featured-img form input');        	
+   //      		var arrInput = [];
+   //      		// console.log($idProduct);
+   //      	$('.wrap-filter .grid .col-lg-4.col-md-4.col-sm-6.col-xs-12 .wrap-featured-img form input').each(function(){
+
+			// 	arrInput.push($(this)[0]); 
+			// });
+
+			// console.log(arrInput);
+
+   //      	var result = [];
+
+			//   nextInput:
+			//     for (var i = 0; i < arrInput.length; i++) {
+			//       var str = arrInput[i].value; // для каждого элемента
+			//       for (var j = 0; j < result.length; j++) { // ищем, был ли он уже?
+			//         if (result[j] == str) continue nextInput; // если да, то следующий
+			//       }
+			//       result.push(arrInput[i]);
+			//     }
+			// 		// console.log(result);
+
+			// 	// for(var i = 0; i < result.length; i++){
+			// 	// 	console.log(result[i]);
+			// 	// }
+
+
+				
+
+
+          $('.wrap-filter .grid').append(appendAddClass);
+
+        }
+        
+
+      });
+
+  }
+</script>

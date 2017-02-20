@@ -1,0 +1,138 @@
+{% if section.blocks != blank%}
+{{ 'pagination.min.js' | asset_url | script_tag }}
+<div class="section-testimonials">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 wrap-breadcrumbs">
+        <div class="breadcrumbs">
+          {% include 'breadcrumbs' %}
+        </div>
+      </div>
+    </div> 
+    <div class="row">
+    
+      
+        <ul class='testimonials' id='data-container'>
+          {% for block in section.blocks %}
+          <li class="block col-xs-12{% if block.settings.testimonials_foto %} col-lg-6 col-md-6 col-sm-6{% else %} col-lg-3 col-md-6 col-sm-6{% endif %}">
+            <div class="wrap-reviews">
+              {% if block.settings.testimonials_foto != blank %}
+            <div class="foto">
+              <img src="{{ block.settings.testimonials_foto | img_url: 'large' }}" itemprop="review">
+            </div>
+            {% endif %}
+            <div class="wrap-testimonials">
+              <p>{{block.settings.testimonials_text}}</p>
+              <span>{{block.settings.testimonials_author}}</span>
+            </div>
+            </div>
+          </li>
+
+          {% endfor %}
+        </ul>
+  </div>
+  <div class='clearfix'></div>
+<div id="pagination-container"></div>
+  </div>
+</div>
+<script>
+
+
+  var result = [], arr = [];
+   
+  var count = document.getElementsByClassName('block');
+  
+  var elementsPage = [], index = [];
+  
+  for(var i = 0; i < count.length; i++){
+    elementsPage.push(count[i]);
+  }
+  
+  elementsPage.forEach(function(item, i, elementsPage) {
+    index.push((+i + 1));
+  });
+  
+  function template(pages, element){
+    for(var i = 0; i < element.length; i++){
+        result.push(element[i]);
+      }
+      
+  for (var key in result) {
+      
+      for(var j = 0; j < pages.length; j++){
+        if((+key + 1) == pages[j]){
+          arr.push(result[key]);
+        }
+      }
+ 
+  }
+          
+        $('#data-container').html(arr);
+        arr = [];
+  }
+  
+$('#pagination-container').pagination({
+    dataSource: index,
+    pageSize: 6,
+    prevText: '&larr;',
+    nextText: '&rarr;',
+    callback: function(data, pagination) {
+      
+      var html = document.getElementsByClassName('block');
+      
+      template(data, html);
+
+    }
+})
+</script>
+{% endif %}
+
+  
+
+
+{% schema %}
+  {
+    "name": "Testimonials",
+	
+	"blocks": [
+      {
+        "type": "text",
+        "name": "Add testimonials ",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "testimonials_foto",
+            "label": "Testimonials Foto"
+          },
+          {
+            "type": "text",
+            "id": "testimonials_author",
+            "label": "Testimonials author"
+          },
+          {
+            "type": "text",
+            "id": "testimonials_text",
+            "label": "Testimonials review"
+          }
+        ]
+      }
+    ],
+	"presets": [
+      {
+        "name": "Products Brands",
+        "category": "Image",
+      
+	"blocks": [
+        {
+          "type": "text"
+        }
+      ]}
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

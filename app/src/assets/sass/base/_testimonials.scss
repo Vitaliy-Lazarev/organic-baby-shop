@@ -1,0 +1,75 @@
+.section-testimonials {
+  .testimonials {
+    // display: flex;
+    // justify-content: space-between;
+    li {
+      .wrap-reviews {
+        background-color: #e7e7b0;
+        text-align: center;
+        overflow: hidden;
+        margin-bottom: 60px;
+        min-height: 286px;
+        .wrap-testimonials {
+
+          padding: 70px 30px 0px 30px;
+          p {
+            color: #442f2f;
+            font-size: 16px; /* Приближение из-за подстановки шрифтов */
+            font-style: italic;
+            text-align: center;
+          }
+          span {
+            color: #aaa92f;
+            font-size: 30px; /* Приближение из-за подстановки шрифтов */
+            font-weight: 400;
+            font-family: 'BerkshireSwash-Regular';
+          }
+        }
+        .foto {
+          float: left;
+          width: 40%;
+        }
+        .foto + .wrap-testimonials {
+          width: 60%;
+          float: left;
+        }
+        img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  #pagination-container {
+    margin-top: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    .paginationjs-pages {
+      ul {
+        li {
+          float: left;
+          border-width: 1px;
+          border-color: #4b3027;
+          border-style: solid;
+          background-color: #ffffff;
+          width: 34px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          margin-right: 10px;
+        }
+        .active {
+          border-width: 1px;
+          border-color: #aaa92f;
+          border-style: solid;
+          background-color: #ffffff;
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+  }
+
+}

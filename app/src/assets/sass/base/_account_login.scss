@@ -1,0 +1,58 @@
+#page-login {
+  .login-register, .btn {
+    border-radius: 15px;
+    padding: 15px 35px;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    border: none;
+  }
+  h3 {
+    color: #4b3027;
+    font-size: 30px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 400;
+    font-family: 'BerkshireSwash-Regular';
+    margin-bottom: 27px;
+  }
+  input {
+    border-width: 1px;
+    border-color: #aaa936;
+    border-style: solid;
+    padding: 20px 18px;
+  }
+  a#RecoverPassword {
+    color: #aaa936;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: underline;
+  }
+  .wrap-customer {
+    background: #e7e7b0;
+    padding: 39px 100px 45px 34px;
+    p {
+      color: #705c48;
+      font-size: 20px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 400;
+      text-align: left;
+      padding-bottom: 62px;
+      margin-bottom: 0;
+    }
+  }
+  .wrap-submite-login {
+    .btn {
+      margin-top: 33px;
+
+    }
+  }
+  .sign_in {
+    background: #eba820 url(sign-in.png) 40px center no-repeat;
+    padding-left: 75px;
+  }
+  .login-register {
+    background: #eba820 url(create_account.png) 40px center no-repeat;
+    padding-left: 75px;
+  }
+}

@@ -1,0 +1,15 @@
+{% comment %}
+The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+
+{% section 'collection-template' %}
+{% if collection.url  == '/collections/hipp' %}
+    {% section 'collections-hipp' %}
+    {% elsif collection.url  == '/collections/hipp-organic' %}
+    {% section 'collections-organic' %}
+    {% elsif collection.url  == '/collections/holle' %}
+    {% section 'collections-holle' %}
+    {% elsif collection.url  == '/collections/lebenswert-bio' %}
+    {% section 'collections-lebenswert-bio' %}
+{% endif %}
+

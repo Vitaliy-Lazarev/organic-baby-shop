@@ -1,0 +1,62 @@
+<div class="page-width" id='wrap-contscts'>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 wrap-breadcrumbs">
+        <div class="breadcrumbs">
+          {% include 'breadcrumbs' %}
+        </div>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-sm-7">
+
+        {% if page.content.size > 0 %}
+          <div class="rte">
+            {{ page.content }}
+          </div>
+        {% endif %}
+
+        <div class="contact-form form-vertical">
+          <p class='title'>We’re here happy to help! Give us the details and we’ll get back to you.</p>
+          {% form 'contact' %}
+
+            {% if form.posted_successfully? %}
+              <p class="note form-success">
+                {{ 'contact.form.post_success' | t }}
+              </p>
+            {% endif %}
+
+            {{ form.errors | default_errors }}
+
+
+              <div class="wrap-input-contacts">
+                <input type="text" id="ContactFormName" placeholder="{{ 'contact.form.name' | t }}" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" class="{% if form.errors contains 'name' %}input--error{% endif %}">
+
+                <input type="email" placeholder="{{ 'contact.form.email' | t }}" id="ContactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="{% if form.errors contains 'email' %}input--error{% endif %}">
+                
+                <input type="tel" placeholder="{{ 'contact.form.phone' | t }}" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" class="{% if form.errors contains 'phone' %}input--error{% endif %}">
+              </div>
+
+
+
+            <textarea rows="10" placeholder="{{ 'contact.form.message' | t }}" id="ContactFormMessage" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+            <input type="submit" class="pull-right btn btnsubmite" value="{{ 'contact.form.submit' | t }}">
+
+          {% endform %}
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="wrap-adresses-contacts">
+          <h3>Contact Information</h3>
+          <ul>
+              {% comment %}<li class='city-country-street'>{{shop.address.street}}, {{shop.address.country}}, {{shop.address.city}}</li>{% endcomment %}
+            <li class='phone'>{{shop.phone}}</li>
+            <li class='email'>{{shop.email}}</li>
+          </ul>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

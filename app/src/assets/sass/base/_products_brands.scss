@@ -1,0 +1,57 @@
+.section-products-brands {
+  .wrap-description {
+    float: left;
+    width: 65%;
+    padding-right: 10px;
+  }
+  .image-link {
+    float: right;
+  }
+  ul {
+    border-width: 1px;
+    border-color: #aaa92f;
+    border-style: solid;
+    overflow: hidden;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      padding: 44px 47px;
+      &:first-child {
+        border-bottom: 1px solid #aaa92f;
+        border-right: 1px solid #aaa92f;
+      }
+      &:nth-child(2) {
+        border-bottom: 1px solid #aaa92f;
+      }
+      &:nth-child(3) {
+        border-right: 1px solid #aaa92f;
+      }
+    }
+    li.col-xs-12.col-sm-6:nth-child(2n + 1) {
+      clear: both;
+    }
+    p {
+      color: #4b3027;
+      font-size: 16px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 400;
+      line-height: 20px;
+    }
+    .title {
+      margin-bottom: 23px;
+    }
+    .button {
+      border-radius: 15px;
+      background-color: #e2c621;
+      padding: 10px 25px;
+      color: #fffffe;
+      font-size: 14px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 10px;
+      display: inline-block;
+    }
+  }
+}

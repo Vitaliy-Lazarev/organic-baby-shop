@@ -1,0 +1,92 @@
+{{ 'owl.carousel.min.js' | asset_url | script_tag }}
+{{ 'owl.carousel.scss.css' | asset_url | stylesheet_tag }}
+<div class="wrap-owl-item page-width">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2>{{ section.settings.title | escape }}</h2>
+      <p>products</p>
+    </div>
+  {% endif %}
+
+  {%- assign collection = collections[section.settings.collection] -%}
+
+  <div id="owl-demo" class="owl-carousel">
+    {% for product in collection.products %}
+      <div class="item">
+        {% include 'product-featured-home' %}
+      </div>
+        
+    {% endfor %}
+  </div>
+
+  {% if section.settings.show_view_all %}
+    <hr class="hr--invisible"></hr>
+    <div class="text-center">
+      <a href="{{ collection.url }}" class="btn">
+        {{ 'collections.general.view_all' | t }}
+      </a>
+    </div>
+  {% endif %}
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+<script>
+$(".owl-carousel").owlCarousel({
+  items : 4,
+  itemsCustom : [
+        [0, 1],
+        [450, 1],
+        [600, 2],
+        [700, 2],
+        [1000, 3],
+        [1200, 3],
+        [1400, 4],
+        [1600, 4]
+      ],
+  navigation:true
+});
+
+</script>
+{% schema %}
+  {
+    "name": "Featured collection",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendors",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "label": "Show 'View all' button",
+        "default": false
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

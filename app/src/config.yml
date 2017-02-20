@@ -1,0 +1,11 @@
+
+development:
+  store: organic-baby-shop.myshopify.com
+  password: 3012bab8b4600e61770291a9e1bb5f09
+  theme_id: 156279939
+  bucket_size: 40
+  refill_rate: 2
+  ignore_files:
+    - "*.swp"
+    - "*~"
+    - "config/settings_data.json"

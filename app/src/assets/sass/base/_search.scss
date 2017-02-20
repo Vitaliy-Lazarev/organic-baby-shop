@@ -1,0 +1,53 @@
+.template-search {
+  .wrap-owl-item {
+    background: none;
+    overflow: initial;
+    &:after {
+      display: none;
+    }
+    .h4.grid-view-item__title {
+      color: #4b3027;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 44px;
+      font-family: "Lato", "HelveticaNeue", "Helvetica Neue", sans-serif;
+    }
+    .grid-view-item__meta {
+      text-align: center;
+      margin-top: 0;
+      span.product-price__price {
+        color: #aaa92f;
+        font-size: 24px;
+        font-weight: 700;
+      }
+    }
+  }
+  #MainContent {
+    .wrap-search {
+      .search__submit {
+        border-radius: 15px;
+        background-color: #eba820;
+        padding: 15px 35px;
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: inline-block;
+        border: none;
+      }
+      input {
+        border-width: 1px;
+        border-color: #aaa936;
+        border-style: solid;
+        padding: 20px 18px;
+        height: auto;
+        max-width: 400px;
+        display: block;
+        margin: 0 auto 25px auto;
+      }
+    }
+  }
+
+}

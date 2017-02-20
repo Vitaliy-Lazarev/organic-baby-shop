@@ -1,0 +1,48 @@
+.section-faq {
+  .wrap-accordion {
+    margin-bottom: 44px;
+    border-width: 1px;
+    border-color: #e7e7b0;
+    border-style: solid;
+    .container {
+      padding: 40px;
+    }
+  }
+  .accordion {
+    color: #4b3027;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: 'BerkshireSwash-Regular';
+    padding: 31px 0 31px 52px;
+    text-transform: capitalize;
+    margin-bottom: 0;
+    position: relative;
+    padding-right: 46px;
+    &:hover {
+      cursor: pointer;
+    }
+    &:after {
+      content: '';
+      width: 67px;
+      height: 35px;
+      position: absolute;
+      background: url(about_cloud.png) left top no-repeat;
+      left: -30px;
+      top: 0;
+      background-size: 100%;
+    }
+  }
+  .accordion-close {
+    background: #e7e7b0 url(plus.png) 98% center no-repeat;
+  }
+  .accordion-open {
+    background: #e7e7b0 url(minus.png) 98% center no-repeat;
+  }
+  p {
+    color: #4b3027;
+    font-size: 14px;
+    font-weight: 100;
+    text-align: left;
+  }
+}
+

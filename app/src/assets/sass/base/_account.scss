@@ -1,0 +1,196 @@
+#account-details {
+  img {
+    box-shadow: -1px -3px 24px 0px rgba(35, 31, 32, 0.15);
+    padding: 25px 15px;
+    float: left;
+    position: relative;
+    top: -40px;
+  }
+  .title-history, .account-details {
+    background: #e7e7b0;
+    color: #4b3027;
+    font-size: 30px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 400;
+    font-family: 'BerkshireSwash-Regular';
+    padding: 31px 0 31px 52px;
+    text-transform: capitalize;
+    margin-bottom: 0;
+    position: relative;
+    letter-spacing: 0.5px;
+    &:after {
+      content: '';
+      width: 67px;
+      height: 35px;
+      position: absolute;
+      background: url(about_cloud.png) left top no-repeat;
+      left: -30px;
+      top: 0;
+      background-size: 100%;
+    }
+  }
+  .account-details {
+    margin-top: 74px;
+  }
+  .wrap-product-order {
+    border-width: 1px;
+    border-color: #e7e7b0;
+    border-style: solid;
+
+  }
+  ul {
+    padding: 47px 22px 30px 22px;
+    overflow: hidden;
+    li {
+      padding-right: 115px;
+      color: #705c48;
+      font-size: 16.03px;
+      font-weight: 400;
+      text-align: left;
+      float: left;
+      padding-top: 40px;
+      position: relative;
+      &:after {
+        content: '';
+        background-color: #e7e7bb;
+        width: 1px;
+        height: 170px;
+        position: absolute;
+        right: 55px;
+        top: 15px;
+      }
+      p {
+        color: #705c48;
+        font-size: 16.03px; /* Приближение из-за подстановки шрифтов */
+        font-weight: 400;
+        text-align: left;
+      }
+      &:first-child {
+        padding-left: 30px;
+        padding-right: 0;
+        display: block;
+        float: none;
+        padding-top: 0;
+        &:after {
+          display: none;
+        }
+      }
+      &:last-child {
+        padding-right: 0px;
+        &:after {
+          display: none;
+        }
+      }
+      &:nth-child(2) {
+        padding-left: 30px;
+      }
+      a {
+        color: #705c48;
+        font-size: 16.03px;
+        font-weight: 400;
+        text-align: left;
+        -webkit-transform: scaleX(1.0028);
+        transform: scaleX(1.0028);
+        max-width: 225px;
+        display: block;
+        padding-left: 53px;
+        float: left;
+      }
+    }
+  }
+  h3 {
+    color: #705c48;
+    font-size: 16.03px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 27px;
+  }
+  .order_number {
+    color: #4b3027;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  .order_date {
+    color: #4b3027;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 40px;
+  }
+  hr {
+    margin: 0 auto;
+    border-color: #e7e7b0;
+    width: 95%;
+    position: relative;
+    top: 1px;
+  }
+  .wrap-details {
+    padding: 47px 0 50px 52px;
+    border-width: 1px;
+    border-color: #e7e7b0;
+    border-style: solid;
+    .name-last {
+      color: #705c48;
+      font-size: 20.04px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 700;
+      text-align: left;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+    a.btn.btn--small {
+      background: #ff9933;
+    }
+  }
+  .account-logout {
+    float: right;
+    a {
+      color: #ffffff;
+      margin-top: 40px;
+      border-radius: 15px;
+      background-color: #e2c621;
+      padding: 20px 45px;
+      font-size: 24px;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-align: center;
+      display: inline-block;
+    }
+  }
+  .more-adress {
+    color: #aaa92f;
+    font-size: 18px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 400;
+  }
+  .without-order {
+    color: #3d4246;
+    font-size: 24px;
+    font-weight: 400;
+    border: none;
+    padding: 45px;
+  }
+}
+
+#wrap-addresses {
+  .address-new-toggle {
+    background: #ff9933;
+  }
+  input, select {
+    border-width: 1px;
+    border-color: #aaa936;
+    border-style: solid;
+    padding: 20px 18px;
+  }
+  .grid{
+    clear: both;
+  }
+}
+
+button.text-link.address-new-toggle {
+  padding: 10px 18px;
+  color: #fff;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.form-vertical [type="submit"], .form-vertical .btn, .address .address-edit-toggle {
+  background-color: #e2c621;
+}

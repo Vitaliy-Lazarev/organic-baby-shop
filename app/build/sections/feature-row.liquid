@@ -1,0 +1,143 @@
+<div class="wrap-img-text-box page-width feature-row">
+  {% capture image_layout %}
+    <div class="feature-row__item">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | img_url: '844x603' | img_tag: section.settings.image.alt, 'feature-row__image' }}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  {% endcapture %}
+
+  <div class="container">
+  <div class="row">
+    <div class="wrap-img-text">
+    <div class="col-sm-12 col-lg-6 col-md-6">
+          {% if section.settings.layout == 'left' %}
+            {{ image_layout }}
+          {% endif %}
+    </div>
+    <div class="col-sm-12 col-lg-6 col-md-6">
+      <div class="wrap-bg-overlay">
+        {% if section.settings.title != blank %}
+        <h2 class="h3">{{ section.settings.title | escape }}</h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="rte-setting featured-row__subtext">{{ section.settings.text }}</div>
+        {% endif %}
+        <div class="wrap-box-circle">
+           {% if section.settings.image_circle != blank %}
+           <div class="block-text">
+              <div class="wrap-circle">
+                <img src="{{ section.settings.image_circle | img_url: '100x100' }}" alt="">
+              </div>
+             <p>{{section.settings.image_circle_text}}</p>
+           </div>
+          {% endif %}
+          {% if section.settings.image_circle2 != blank %}
+            <div class="block-text">
+              <div class="wrap-circle">
+                <img src="{{ section.settings.image_circle2 | img_url: '100x100' }}" alt="">
+              </div>
+             <p>{{section.settings.image_circle2_text}}</p>
+           </div>
+          {% endif %}
+        </div>
+       
+
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn">
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.layout == 'right' %}
+      {{ image_layout }}
+    {% endif %}
+  </div>
+</div>
+</div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Image with text",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_circle",
+        "label": "Image Circle"
+      },
+      {
+        "type": "text",
+        "id": "image_circle_text",
+        "label": "Heading",
+        "default": "Image with text circle"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_circle2",
+        "label": "Image Circle"
+      },
+      {
+        "type": "text",
+        "id": "image_circle2_text",
+        "label": "Heading",
+        "default": "Image with text circle two"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Image on left"
+          },
+          {
+            "value": "right",
+            "label": "Image on right"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

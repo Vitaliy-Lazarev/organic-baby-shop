@@ -1,0 +1,24 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+{{ 'owl.carousel.min.js' | asset_url | script_tag }}
+{{ 'owl.carousel.scss.css' | asset_url | stylesheet_tag }}
+{% section 'product-template' %}
+<div class="wrap-owl-item page-width">
+    <div class="container">
+        <div class="row">
+			{% section 'related-products' %}
+    	</div>
+    </div>
+</div>
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+</script>

@@ -1,0 +1,66 @@
+{% if section.blocks != blank %}
+<div class="wrap-sub-category">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      {% for block in section.blocks %}
+    
+        <div class="category-hipp">
+          <h3>{{block.settings.title_lebenswert}}</h3>
+            <div class="content">
+              <p>{{block.settings.description_lebenswert}}</p>
+            </div>
+        </div>
+
+
+    {% endfor %}
+      <div class="footer_hipp">
+        {{section.settings.footer_lebenswert}}
+      </div>     
+    </div>
+  </div>
+</div>
+</div>
+{% endif %}          
+{% schema %}
+  {
+    "name": "Category Lebenswert Bio",
+    "settings": [{
+      
+            "type": "text",
+            "id": "footer_lebenswert",
+            "label": "Footer Lebenswert Bio"
+
+      }],
+  
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Lebenswert Bio text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title_lebenswert",
+            "label": "Title Lebenswert Bio"
+          },
+          {
+            "type": "text",
+            "id": "description_lebenswert",
+            "label": "Description Lebenswert Bio"
+          }
+        ]
+      }
+    ],
+  "presets": [
+      {
+        "name": "Category Lebenswert Bio",
+        "category": "text",
+      
+      "blocks": [
+          {
+            "type": "text"
+          }
+        ]}
+    ]
+}
+{% endschema %}

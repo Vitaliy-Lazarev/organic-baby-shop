@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
   
 $('.btnAddCart').on('click', function(event) {
     event.preventDefault();
-  $( "#AddToCart-product-template" ).trigger( "click" );
+    $( "#AddToCart-product-template" ).trigger( "click" );
 });
 
 // tabs pagew products
@@ -26,14 +26,14 @@ $('ul.tabs').each(function(){
 
 $('#add-review').on('click', function (event) { // если в href начинается с # или ., то ловим клик
     event.preventDefault();
-$( "#box-reviews a" ).trigger( "click" );
-var scroll_el = $(this).attr('href'); // возьмем содержимое атрибута href
-if ($(scroll_el).length != 0) { // проверим существование элемента чтобы избежать ошибки
-$('html, body').animate({
-scrollTop: $(scroll_el).offset().top
-}, 1100); // анимируем скроолинг к элементу scroll_el
-}
-return false; // выключаем стандартное действие
+    $( "#box-reviews a" ).trigger( "click" );
+    var scroll_el = $(this).attr('href'); // возьмем содержимое атрибута href
+    if ($(scroll_el).length != 0) { // проверим существование элемента чтобы избежать ошибки
+    $('html, body').animate({
+    scrollTop: $(scroll_el).offset().top
+    }, 1100); // анимируем скроолинг к элементу scroll_el
+    }
+    return false; // выключаем стандартное действие
 });
 
 

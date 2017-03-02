@@ -24,8 +24,7 @@
         collection.url  == '/collections/cow-milk-stage-4' or
         collection.url  == '/collections/goat-milk-stage-1' or
         collection.url  == '/collections/goat-milk-stage-2' or
-        collection.url  == '/collections/goat-milk-stage-3' or
-        collection.url  == '/collections/goat-milk-stage-4'
+        collection.url  == '/collections/goat-milk-stage-3'
 
         %} col-sm-9 {% else %} col-sm-12{% endif %}">
           {% if section.settings.layout == 'grid' %}
@@ -39,8 +38,7 @@
           collection.url  == '/collections/cow-milk-stage-4' or
           collection.url  == '/collections/goat-milk-stage-1' or
           collection.url  == '/collections/goat-milk-stage-2' or
-          collection.url  == '/collections/goat-milk-stage-3' or
-          collection.url  == '/collections/goat-milk-stage-4'
+          collection.url  == '/collections/goat-milk-stage-3'
           %} col-lg-4 col-md-4 col-sm-6 col-xs-12 {% else %} col-lg-3 col-md-4 col-sm-6 col-xs-12{% endif %}">
             <div class="owl-item">
             {% include 'product-featured-home' %}
@@ -104,8 +102,7 @@
           collection.url  == '/collections/cow-milk-stage-4' or
           collection.url  == '/collections/goat-milk-stage-1' or
           collection.url  == '/collections/goat-milk-stage-2' or
-          collection.url  == '/collections/goat-milk-stage-3' or
-          collection.url  == '/collections/goat-milk-stage-4'
+          collection.url  == '/collections/goat-milk-stage-3'
         %}
 
         <div id="column-right" class="col-sm-3 hidden-xs">
@@ -209,11 +206,6 @@
                               <label><a href="/collections/goat-milk-stage-3">Stage 3</a></label>
                             </div>
 
-                            <div class="wrap-check">
-                              <input class="ajax-value" type="checkbox" value="/collections/goat-milk-stage-4" onchange="vendorProduct(this.value)">
-                              <label><a href="/collections/goat-milk-stage-4">Stage 4</a></label>
-                            </div>
-
                           </div>
 
                         </div>
@@ -259,8 +251,7 @@
 
                       {% if collection.url  == '/collections/goat-milk-stage-1' or
                           collection.url  == '/collections/goat-milk-stage-2' or
-                          collection.url  == '/collections/goat-milk-stage-3' or
-                          collection.url  == '/collections/goat-milk-stage-4'
+                          collection.url  == '/collections/goat-milk-stage-3'
                       %}
                         <div class="wrap-filter-parent">
                           <div class="block-title">Stages</div>
@@ -282,10 +273,6 @@
                               <label><a href="/collections/goat-milk-stage-3">Stage 3</a></label>
                             </div>
 
-                            <div class="wrap-check">
-                              <input class="ajax-value" type="checkbox" value="/collections/goat-milk-stage-4" onchange="vendorProduct(this.value)">
-                              <label><a href="/collections/goat-milk-stage-4">Stage 4</a></label>
-                            </div>
 
                           </div>
 
